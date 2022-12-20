@@ -90,7 +90,7 @@
 
 			<div>
 				<h2 class="mt-4 text-2xl font-bold">Credits</h2>
-				<img src="/logo.png" class="m-auto w-1/2 rounded-xl" />
+				<img src="/logo.png" class="m-auto w-1/2 rounded-xl" alt="logo" />
 				<h3 class="text-1xl mt-4 font-bold">Data Sources</h3>
 				<p class="text-lg">Data taken from timestamp comments on YouTube</p>
 				<ul class="list-disc pl-5">
