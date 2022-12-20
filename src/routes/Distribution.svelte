@@ -28,15 +28,7 @@
 			options: {
 				responsive: true,
 				maintainAspectRatio: true,
-				plugins: {
-					legend: {
-						position: 'top'
-					},
-					title: {
-						display: true,
-						text: 'Chart.js Pie Chart'
-					}
-				},
+				showTooltips: true,
 				cutout: '50%'
 			}
 		});

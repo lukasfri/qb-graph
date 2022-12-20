@@ -53,6 +53,7 @@
 				},
 				options: {
 					responsive: true,
+					showTooltips: true,
 					scales: {
 						y: {
 							type: 'category',

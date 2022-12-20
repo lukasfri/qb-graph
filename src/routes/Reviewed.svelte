@@ -40,6 +40,7 @@
 					}
 				},
 				responsive: true,
+				showTooltips: true,
 				scales: {
 					x: {
 						stacked: true

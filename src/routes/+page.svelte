@@ -6,7 +6,12 @@
 	import Playground from './Playground.svelte';
 	import Reviewed from './Reviewed.svelte';
 	import type { PageData } from './$types';
+	import { Chart, Tooltip } from 'chart.js';
+	import { onMount } from 'svelte';
 
+	onMount(() => {
+		Chart.register([Tooltip]);
+	});
 	export let data: PageData;
 </script>
 
