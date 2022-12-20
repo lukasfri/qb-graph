@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { colors, type Category } from '$lib/controllers/rawData';
-	import { ArcElement, Chart, DoughnutController } from 'chart.js';
+	import { ArcElement, Chart, DoughnutController, Tooltip } from 'chart.js';
 	import { onMount } from 'svelte';
 
 	export let countPerCategory: Record<Category, number>;
@@ -10,7 +10,7 @@
 	let chart;
 
 	onMount(() => {
-		Chart.register(DoughnutController, ArcElement);
+		Chart.register(Tooltip, DoughnutController, ArcElement);
 
 		chart = new Chart(canvas, {
 			type: 'doughnut',

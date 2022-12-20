@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Category, colors } from '$lib/controllers/rawData';
-	import { BarController, BarElement, CategoryScale, Chart, LinearScale } from 'chart.js';
+	import { BarController, BarElement, CategoryScale, Chart, LinearScale, Tooltip } from 'chart.js';
 	import { onMount } from 'svelte';
 
 	export let countPerYear: [number, Record<Category, number>][];
@@ -26,7 +26,7 @@
 	};
 
 	onMount(() => {
-		Chart.register(BarController, BarElement, CategoryScale, LinearScale);
+		Chart.register(Tooltip, BarController, BarElement, CategoryScale, LinearScale);
 
 		chart = new Chart(canvas, {
 			type: 'bar',

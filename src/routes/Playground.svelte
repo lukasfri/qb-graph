@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { ratingsPerYearFlat } from '$lib/controllers/data';
 	import { Category, tanksList, type TankName, type Year } from '$lib/controllers/rawData';
-	import { Chart, LineController, LineElement, PointElement } from 'chart.js';
+	import { Chart, LineController, LineElement, PointElement, Tooltip } from 'chart.js';
 
 	let canvas: HTMLCanvasElement;
 
@@ -23,7 +23,7 @@
 
 	let chart: Chart<'line', (Category | undefined)[], string>;
 
-	if (browser) Chart.register(LineController, LineElement, PointElement);
+	if (browser) Chart.register(Tooltip, LineController, LineElement, PointElement);
 
 	function generateDataset(selectedTanks: Partial<Record<string, boolean>>) {
 		return Object.entries(selectedTanks)

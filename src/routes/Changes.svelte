@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { flowData, FlowLabel } from '$lib/controllers/flowData';
 	import { Category, colors } from '$lib/controllers/rawData';
-	import { Chart } from 'chart.js';
+	import { Chart, Tooltip } from 'chart.js';
 
 	import { Flow, SankeyController } from 'chartjs-chart-sankey';
 	import { onMount } from 'svelte';
@@ -18,7 +18,7 @@
 	}
 
 	onMount(() => {
-		Chart.register(SankeyController, Flow);
+		Chart.register(Tooltip, SankeyController, Flow);
 
 		chart = new Chart(canvas, {
 			type: 'sankey',
