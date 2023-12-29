@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Category, colors } from '$lib/controllers/rawData';
+	import { PremiumCategory, colors } from '$lib/controllers/rawData';
 	import { BarController, BarElement, CategoryScale, Chart, LinearScale, Tooltip } from 'chart.js';
 	import { onMount } from 'svelte';
 
-	export let countPerYear: [number, Record<Category, number>][];
+	export let countPerYear: [number, Record<PremiumCategory, number>][];
 
 	let canvas: HTMLCanvasElement;
 
@@ -12,16 +12,16 @@
 	const data: {
 		labels: string[];
 		datasets: {
-			label: Category;
+			label: PremiumCategory;
 			data: number[];
 			backgroundColor: string;
 		}[];
 	} = {
 		labels: countPerYear.map(([year]) => year.toString()),
-		datasets: Object.entries(Category).map(([key, label]) => ({
+		datasets: Object.entries(PremiumCategory).map(([key, label]) => ({
 			label,
-			data: countPerYear.map(([year, value]) => value[label as Category]),
-			backgroundColor: colors[label as Category]
+			data: countPerYear.map(([year, value]) => value[label as PremiumCategory]),
+			backgroundColor: colors[label as PremiumCategory]
 		}))
 	};
 

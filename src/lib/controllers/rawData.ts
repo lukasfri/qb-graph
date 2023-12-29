@@ -1,4 +1,4 @@
-export enum Category {
+export enum PremiumCategory {
   PayToWin = "Pay To Win",
   SuperCompetitive = "Super Competitive",
   GreatPerformers = "Great Performers",
@@ -9,141 +9,577 @@ export enum Category {
   PayToLose = "Pay To Lose",
 }
 
-export const colors: Record<Category, string> = {
-  [Category.PayToWin]: "#8A2BE2",
-  [Category.SuperCompetitive]: "#40E0D0",
-  [Category.GreatPerformers]: "#006400",
-  [Category.DecentChoices]: "#7CFC00",
-  [Category.AlrightSituational]: "#FFFF00",
-  [Category.Avoid]: "#FF8C00",
-  [Category.IHateIt]: "#FF0000",
-  [Category.PayToLose]: "#FF0000"
+export const colors: Record<PremiumCategory, string> = {
+  [PremiumCategory.PayToWin]: "#8A2BE2",
+  [PremiumCategory.SuperCompetitive]: "#40E0D0",
+  [PremiumCategory.GreatPerformers]: "#006400",
+  [PremiumCategory.DecentChoices]: "#7CFC00",
+  [PremiumCategory.AlrightSituational]: "#FFFF00",
+  [PremiumCategory.Avoid]: "#FF8C00",
+  [PremiumCategory.IHateIt]: "#FF0000",
+  [PremiumCategory.PayToLose]: "#FF0000"
 }
 
+export type TankNation = "USSR" | "Germany" | "USA" | "France" | "UK" | "China" | "Czech" | "Sweden" | "Poland" | "Italy" | "Japan";
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface TankDetails {}
+interface TankDetails {
+  premium?: boolean;
+  tier?: number;
+  nation?: TankNation;
+}
 
 export type IncompleteRecord<K extends string | number | symbol, V> = Partial<Record<K, V>>;
 
 export type Year = 2022 | 2021 | 2020 | 2019;
 
+// Tank list
 export const tanksList = {
-  "BZ 176": {},
-  "Skoda T56": {},
-  "Obj. 703-II": {},
-  "Udarniy": {},
-  "Borasque": {},
-  "Iron Arnie": {},
-  "EBR 75": {},
-  "Vipera": {},
-  "TS-5": {},
-  "112": {},
-  "Bisonte": {},
-  "Chieftain Prototype": {},
-  "Renegade": {},
-  "IS3-A": {},
-  "Obj. 252U Defender": {},
-  "122 TM": {},
-  "Astron Rex": {},
-  "AMBT": {},
-  "ELC EVEN 90": {},
-  "LT 432": {},
-  "TVP 100": {},
-  "GSOR 1008": {},
-  "TL7": {},
-  "KV-4 KTTS": {},
-  "WZ-114": {},
-  "Somua SM": {},
-  "E75 TS": {},
-  "Nameless": {},
-  "50TP Prototyp": {},
-  "Emil 1951": {},
-  "Tornvagn": {},
-  "Charlemaine": {},
-  "Calaban": {},
-  "Gonzalo": {},
-  "KV-5": {},
-  "Type 59": {},
-  "Kampfpanzer 07 RH": {},
-  "Progetto 46": {},
-  "CS-52 LIS": {},
-  "Lansen C": {},
-  "T44-100": {},
-  "Obj 274a": {},
-  "Char 75": {},
-  "WZ-120-1 FT (T8)": {},
-  "Turtle 1": {},
-  "SU-130PM": {},
-  "AMX M4 mle. 49 Liberté": {},
-  "Strv K": {},
-  "Caernavon AX": {},
-  "T34": {},
-  "M4Y": {},
-  "Patriot": {},
-  "Kreslavski": {},
-  "T-34-3": {},
-  "Alt Proto": {},
-  "Lorraine": {},
-  "M4A1 Revalorisé": {},
-  "Mutz": {},
-  "Eidelweise": {},
-  "STA-2": {},
-  "Centurion 5/1": {},
-  "TL1 LPC": {},
-  "Super Pershing": {},
-  "T54 Mod 1": {},
-  "Guard": {},
-  "M41D": {},
-  "M 41 90 mm": {},
-  "HWK 30": {},
-  "Senlac": {},
-  "T92 LT": {},
-  "WZ 120 (T9)": {},
-  "AMX CDA": {},
-  "Skorpion": {},
-  "Jagdtiger 8,8 cm": {},
-  "S1": {},
-  "ISU-152K": {},
-  "ISU-130": {},
-  "FCM 50t": {},
-  "VK 75.01k": {},
-  "Lowe": {},
-  "Chrystler K": {},
-  "T77": {},
-  "IS5": {},
-  "Skoda T27": {},
-  "AMX CDC": {},
-  "FV4202": {},
-  "T25 Pilot": {},
-  "T42": {},
-  "Jagdtiger Prototype": {},
-  "T-103": {},
-  "111": {},
-  "Mauerbrecher": {},
-  "59 Patton": {},
-  "Panther 8,8 cm": {},
-  "Räumpanzer": {},
-  "Strv 81/Primo Victoria": {},
-  "Chieftain/T95": {},
-  "Ripper Patton": {},
-  "Kanonen Jagdpanzer 105mm": {},
-  "Kanonen Jagdpanzer 90mm": {},
-  "Mutant": {},
-  "Kyrovets": {},
-  "IS6": {},
-  "T95E2": {},
-  "WZ-111": {},
-  "Chimera": {},
-  "WZ-112-2": {},
+  "BZ 176": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Skoda T56": {
+    premium: true,
+    tier: 8,
+    nation: "Czech",
+  },
+  "Obj. 703-II": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Udarniy": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Borasque": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "Iron Arnie": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "EBR 75": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "Vipera": {
+    premium: true,
+    tier: 8,
+    nation: "Italy",
+  },
+  "TS-5": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "112": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Bisonte": {
+    premium: true,
+    tier: 8,
+    nation: "Italy",
+  },
+  "Chieftain Prototype": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "Renegade": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "IS3-A": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Obj. 252U Defender": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "122 TM": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Astron Rex": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "AMBT": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "ELC EVEN 90": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "LT 432": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "TVP 100": {
+    premium: true,
+    tier: 8,
+    nation: "Czech",
+  },
+  "GSOR 1008": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "TL7": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "KV-4 KTTS": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "WZ-114": {
+    premium: true,
+    tier: 9,
+    nation: "China",
+  },
+  "Somua SM": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "E75 TS": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Nameless": {
+    premium: true,
+    tier: 8,
+    nation: "Japan",
+  },
+  "50TP Prototyp": {
+    premium: true,
+    tier: 8,
+    nation: "Poland",
+  },
+  "Emil 1951": {
+    premium: true,
+    tier: 8,
+    nation: "Sweden",
+  },
+  "Tornvagn": {
+    premium: true,
+    tier: 8,
+    nation: "Sweden",
+  },
+  "Charlemaine": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "Calaban": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "Gonzalo": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "KV-5": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Type 59": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Kampfpanzer 07 RH": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Progetto 46": {
+    premium: true,
+    tier: 8,
+    nation: "Italy",
+  },
+  "CS-52 LIS": {
+    premium: true,
+    tier: 8,
+    nation: "Poland",
+  },
+  "Lansen C": {
+    premium: true,
+    tier: 8,
+    nation: "Sweden",
+  },
+  "T44-100": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Obj 274a": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Char 75": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "WZ-120-1 FT (T8)": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Turtle 1": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "SU-130PM": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "AMX M4 mle. 49 Liberté": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "Strv K": {
+    premium: true,
+    tier: 9,
+    nation: "Sweden",
+  },
+  "Caernavon AX": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "T34": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "M4Y": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "Patriot": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "Kreslavski": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "T-34-3": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Alt Proto AMX 30": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "Lorraine": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "M4A1 Revalorisé": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "Mutz": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Eidelweise": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "STA-2": {
+    premium: true,
+    tier: 8,
+    nation: "Japan",
+  },
+  "Centurion 5/1": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "TL1 LPC": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "Super Pershing": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "T54 Mod 1": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Guard": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "M41D": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "M 41 90 mm": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "HWK 30": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Senlac": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "T92 LT": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "WZ 120 (T9)": {
+    premium: true,
+    tier: 9,
+    nation: "China",
+  },
+  "AMX CDA": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "Skorpion": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Jagdtiger 8,8 cm": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "S1": {
+    premium: true,
+    tier: 8,
+    nation: "Sweden",
+  },
+  "ISU-152K": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "ISU-130": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "FCM 50t": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "VK 75.01k": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Lowe": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Chrystler K": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "T77": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "IS5": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "Skoda T27": {
+    premium: true,
+    tier: 8,
+    nation: "Czech",
+  },
+  "AMX CDC": {
+    premium: true,
+    tier: 8,
+    nation: "France",
+  },
+  "FV4202": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "T25 Pilot": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "T42": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "Jagdtiger Prototype": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "T-103": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "111": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Mauerbrecher": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "59 Patton": {
+    premium: true,
+    tier: 8,
+    nation: "Japan",
+  },
+  "Panther 8,8 cm": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Räumpanzer": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Strv 81/Primo Victoria": {
+    premium: true,
+    tier: 8,
+    nation: "Sweden",
+  },
+  "Chieftain/T95": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "Ripper Patton": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "Kanonen Jagdpanzer 105mm": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Kanonen Jagdpanzer 90mm": {
+    premium: true,
+    tier: 8,
+    nation: "Germany",
+  },
+  "Mutant": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "Kyrovets": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "IS6": {
+    premium: true,
+    tier: 8,
+    nation: "USSR",
+  },
+  "T95E2": {
+    premium: true,
+    tier: 8,
+    nation: "USA",
+  },
+  "WZ-111": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
+  "Chimera": {
+    premium: true,
+    tier: 8,
+    nation: "UK",
+  },
+  "WZ-112-2": {
+    premium: true,
+    tier: 8,
+    nation: "China",
+  },
 } as const satisfies Record<string, TankDetails>;
 
-export type TankName = keyof typeof tanksList;
+export type PremiumTank = keyof typeof tanksList;
 
-export type RatingsList = IncompleteRecord<Category, TankName[]>;
+export type RatingsList<Category extends string | number | symbol, TankName> = IncompleteRecord<Category, TankName[]>;
 
-export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
+export const premiumTankTierList: IncompleteRecord<Year, RatingsList<PremiumCategory, PremiumTank>> = {
+  // Source: ME
   2022: {
-    [Category.PayToWin]: [
+    [PremiumCategory.PayToWin]: [
       "BZ 176",
       "Skoda T56",
       "Obj. 703-II",
@@ -154,7 +590,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Vipera",
       "TS-5",
     ],
-    [Category.SuperCompetitive]: [
+    [PremiumCategory.SuperCompetitive]: [
       "112",
       "Bisonte",
       "Chieftain Prototype",
@@ -171,7 +607,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "TL7",
       "KV-4 KTTS",
     ],
-    [Category.GreatPerformers]: [
+    [PremiumCategory.GreatPerformers]: [
       "WZ-114",
       "Somua SM",
       "E75 TS",
@@ -195,7 +631,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Turtle 1",
       "SU-130PM",
     ],
-    [Category.DecentChoices]: [
+    [PremiumCategory.DecentChoices]: [
       "AMX M4 mle. 49 Liberté",
       "Strv K",
       "Caernavon AX",
@@ -204,7 +640,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Patriot",
       "Kreslavski",
       "T-34-3",
-      "Alt Proto",
+      "Alt Proto AMX 30",
       "Lorraine",
       "M4A1 Revalorisé",
       "Mutz",
@@ -228,7 +664,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "ISU-152K",
       "ISU-130",
     ],
-    [Category.AlrightSituational]: [
+    [PremiumCategory.AlrightSituational]: [
       "FCM 50t",
       "VK 75.01k",
       "Lowe",
@@ -243,7 +679,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Jagdtiger Prototype",
       "T-103",
     ],
-    [Category.Avoid]: [
+    [PremiumCategory.Avoid]: [
       "111",
       "Mauerbrecher",
       "59 Patton",
@@ -255,7 +691,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Kanonen Jagdpanzer 105mm",
       "Kanonen Jagdpanzer 90mm",
     ],
-    [Category.IHateIt]: [
+    [PremiumCategory.IHateIt]: [
       "Mutant", // (Shouldn't ever have been sold)
       "Kyrovets", // (Cost way too much)
       "ELC EVEN 90", // (Because its toxic)
@@ -263,7 +699,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
   },
   //Source Greg Brown
   2021: {
-    [Category.PayToWin]: [
+    [PremiumCategory.PayToWin]: [
       "Skoda T56",
       "Renegade",
       "Obj. 703-II",
@@ -271,7 +707,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "EBR 75",
       "Borasque",
     ],
-    [Category.SuperCompetitive]: [
+    [PremiumCategory.SuperCompetitive]: [
       "50TP Prototyp",
       "IS3-A",
       "122 TM",
@@ -284,7 +720,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "ELC EVEN 90",
       "LT 432",
     ],
-    [Category.GreatPerformers]: [
+    [PremiumCategory.GreatPerformers]: [
       "WZ-112-2",
       "Somua SM",
       "E75 TS",
@@ -296,7 +732,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Obj. 252U Defender",
       "Type 59",
       "Skoda T27",
-      "Alt Proto",
+      "Alt Proto AMX 30",
       "Kampfpanzer 07 RH",
       "CS-52 LIS",
       "T44-100",
@@ -306,7 +742,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "M41D",
 
     ],
-    [Category.DecentChoices]: [
+    [PremiumCategory.DecentChoices]: [
       "FCM 50t",
       "AMX M4 mle. 49 Liberté",
       "VK 75.01k",
@@ -336,7 +772,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Senlac",
       "T77",
     ],
-    [Category.AlrightSituational]: [
+    [PremiumCategory.AlrightSituational]: [
       "Chrystler K",
       "T34",
       "KV-5",
@@ -348,7 +784,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "T92 LT",
       "T42",
     ],
-    [Category.Avoid]: [
+    [PremiumCategory.Avoid]: [
       "WZ-111",
       "Panther 8,8 cm",
       "Räumpanzer",
@@ -356,7 +792,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "T-103",
       "Ripper Patton",
     ],
-    [Category.PayToLose]: [
+    [PremiumCategory.PayToLose]: [
       "Mauerbrecher",
       "Mutant",
       "59 Patton",
@@ -365,14 +801,14 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
   },
   //Shryquill - DOUBLECHECK
   2020: {
-    [Category.PayToWin]: [
+    [PremiumCategory.PayToWin]: [
       "LT 432",
       "EBR 75",
       "Progetto 46",
       "Borasque",
       "TS-5",
     ],
-    [Category.SuperCompetitive]: [
+    [PremiumCategory.SuperCompetitive]: [
       "IS3-A",
       "Renegade",
       "Obj. 252U Defender",
@@ -387,7 +823,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "GSOR 1008",
       "SU-130PM",
     ],
-    [Category.GreatPerformers]: [
+    [PremiumCategory.GreatPerformers]: [
       "IS5",
       "Lowe",
       "50TP Prototyp",
@@ -405,7 +841,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "S1",
 
     ],
-    [Category.DecentChoices]: [
+    [PremiumCategory.DecentChoices]: [
       "IS6",
       "KV-5",
       "VK 75.01k", //Probs VK 75
@@ -422,7 +858,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "M4A1 Revalorisé",
       "ISU-152K",
     ],
-    [Category.AlrightSituational]: [
+    [PremiumCategory.AlrightSituational]: [
       "Kreslavski",
       "T34",
       "Chrystler K",
@@ -435,7 +871,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "FV4202",
       "AMX CDA",
     ],
-    [Category.Avoid]: [
+    [PremiumCategory.Avoid]: [
       "WZ-111",
       "Senlac",
       "M41D",
@@ -448,7 +884,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "Jagdtiger 8,8 cm",
       "Kanonen Jagdpanzer 105mm",
     ],
-    [Category.PayToLose]: [
+    [PremiumCategory.PayToLose]: [
       "Mutant",
       "Mauerbrecher",
       "59 Patton",
@@ -457,14 +893,14 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
   },
   // Guima Channel
   2019: {
-    [Category.PayToWin]: [
+    [PremiumCategory.PayToWin]: [
       "EBR 75",
       "Progetto 46",
       "TS-5",
       "Obj. 252U Defender",
       "LT 432",
     ],
-    [Category.SuperCompetitive]: [
+    [PremiumCategory.SuperCompetitive]: [
       "Type 59",
       "WZ-120-1 FT (T8)",
       "Lorraine",
@@ -473,7 +909,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "SU-130PM",
       "Obj. 703-II",
     ],
-    [Category.GreatPerformers]: [
+    [PremiumCategory.GreatPerformers]: [
       "112",
       "Somua SM",
       "Skorpion",
@@ -487,7 +923,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "IS5",
       "T44-100",
     ],
-    [Category.DecentChoices]: [
+    [PremiumCategory.DecentChoices]: [
       "WZ-111",
       "FCM 50t",
       "M4A1 Revalorisé",
@@ -504,7 +940,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "T54 Mod 1",
       "Guard",
     ],
-    [Category.AlrightSituational]: [
+    [PremiumCategory.AlrightSituational]: [
       "T-34-3",
       "Skoda T27",
       "Mutz",
@@ -519,7 +955,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "KV-5",
       "IS6",
     ],
-    [Category.Avoid]: [
+    [PremiumCategory.Avoid]: [
       "AMX CDC",
       "AMX CDA",
       "Kanonen Jagdpanzer 105mm",
@@ -532,7 +968,7 @@ export const ratingsPerYear: IncompleteRecord<Year, RatingsList> = {
       "ISU-130",
       "Kreslavski",
     ],
-    [Category.PayToLose]: [
+    [PremiumCategory.PayToLose]: [
       "59 Patton",
       "M41D",
       "Panther 8,8 cm",

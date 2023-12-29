@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { ratingsPerYearFlat } from '$lib/controllers/data';
-	import { Category, tanksList, type TankName, type Year } from '$lib/controllers/rawData';
+	import { PremiumCategory, tanksList, type PremiumTank, type Year } from '$lib/controllers/rawData';
 	import { Chart, LineController, LineElement, PointElement, Tooltip } from 'chart.js';
 
 	let canvas: HTMLCanvasElement;
@@ -21,7 +21,7 @@
 
 	const years = Object.keys(ratingsPerYearFlat);
 
-	let chart: Chart<'line', (Category | undefined)[], string>;
+	let chart: Chart<'line', (PremiumCategory | undefined)[], string>;
 
 	if (browser) Chart.register(Tooltip, LineController, LineElement, PointElement);
 
@@ -36,7 +36,7 @@
 				borderDashOffset: i,
 				borderColor: selectedTankColors[tankName],
 				data: years.map(
-					(year) => ratingsPerYearFlat[parseInt(year) as Year]?.[tankName as TankName]
+					(year) => ratingsPerYearFlat[parseInt(year) as Year]?.[tankName as PremiumTank]
 				) as any[]
 			}));
 	}
@@ -57,7 +57,7 @@
 					scales: {
 						y: {
 							type: 'category',
-							labels: Object.values(Category)
+							labels: Object.values(PremiumCategory)
 						}
 					}
 				}

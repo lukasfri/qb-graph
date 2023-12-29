@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { flowData, FlowLabel } from '$lib/controllers/flowData';
-	import { Category, colors } from '$lib/controllers/rawData';
+	import { PremiumCategory, colors } from '$lib/controllers/rawData';
 	import { Chart, Tooltip } from 'chart.js';
 
 	import { Flow, SankeyController } from 'chartjs-chart-sankey';
@@ -14,7 +14,7 @@
 	function getColor(label: FlowLabel) {
 		const [year, category] = label.split('-');
 
-		return colors[category as Category] ?? 'lightgray';
+		return colors[category as PremiumCategory] ?? 'lightgray';
 	}
 
 	onMount(() => {

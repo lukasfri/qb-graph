@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ratingsPerYearFlat } from "./data";
-import { Category, tanksList, type IncompleteRecord, type TankName } from "./rawData";
+import { PremiumCategory, tanksList, type IncompleteRecord, type PremiumTank } from "./rawData";
 
-export type GoingToDestination = Category | "Ignored";
+export type GoingToDestination = PremiumCategory | "Ignored";
 type GoingTo = IncompleteRecord<GoingToDestination, GoingFrom>;
 
-export type GoingFromDestination = Category | "New" | "Brought back";
+export type GoingFromDestination = PremiumCategory | "New" | "Brought back";
 type GoingFrom = IncompleteRecord<GoingFromDestination, number>;
 
 export type FlowLabel = `${number}-${GoingFromDestination | GoingToDestination}`;
@@ -18,7 +18,7 @@ function incrementFlow(flowStats: Record<number, GoingTo>, yearNumber: number, f
 }
 
 function generateFlowStats(): Record<number, GoingTo> {
-  const hasBeenSeen = new Set<TankName>();
+  const hasBeenSeen = new Set<PremiumTank>();
   const flowStats: Record<number, GoingTo> = {};
 
   for (const [yearNumberUntyped, yearData] of Object.entries(ratingsPerYearFlat)) {
@@ -32,7 +32,7 @@ function generateFlowStats(): Record<number, GoingTo> {
   
     
     for (const untypedTankName of Object.keys(tanksList)) {
-      const tankName = untypedTankName as TankName;
+      const tankName = untypedTankName as PremiumTank;
   
       const currentYearTank = yearData[tankName];
       const previousYearTank = previousYearData[tankName];
@@ -67,14 +67,14 @@ export interface FlowData {
 }
 
 export const categoryPriorities: Record<GoingFromDestination | GoingToDestination, number> = {
-  [Category.PayToWin]: 1,
-  [Category.SuperCompetitive]: 2,
-  [Category.GreatPerformers]: 3,
-  [Category.DecentChoices]: 4,
-  [Category.AlrightSituational]: 5,
-  [Category.Avoid]: 6,
-  [Category.IHateIt]: 7,
-  [Category.PayToLose]: 8,
+  [PremiumCategory.PayToWin]: 1,
+  [PremiumCategory.SuperCompetitive]: 2,
+  [PremiumCategory.GreatPerformers]: 3,
+  [PremiumCategory.DecentChoices]: 4,
+  [PremiumCategory.AlrightSituational]: 5,
+  [PremiumCategory.Avoid]: 6,
+  [PremiumCategory.IHateIt]: 7,
+  [PremiumCategory.PayToLose]: 8,
   Ignored: 10,
   New: 0,
   "Brought back": 9
